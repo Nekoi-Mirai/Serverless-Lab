@@ -53,28 +53,32 @@ Create the execution role that gives function permission to access AWS resources
     }
 ```
 
-![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/61c8366f-a189-4398-88a2-0b8b5f7c6d55)
-![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/a118e6e7-724d-4a07-9d89-a76e1524a4ac)
-![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/5cd52458-95a0-4d3a-92c9-bca6b2cd18ba)
-![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/18b60554-9957-4fbe-abd5-35638cab9864)
-![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/5103b2e0-8d46-4a5d-93f0-d04c1e09d5ee)
-![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/61f74c62-e7fc-4dae-9244-20ed0ec487c1)
-![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/bd8a95c5-591a-4590-8d83-afeab884ca2c)
-![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/b7d5e1b6-4929-4ad4-961a-41076cb06142)
+<img width="960" alt="2" src="https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/56a321ff-7c6e-42e7-b1e2-e5847513dc34">
+![3](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/b16afaa5-ac54-4523-8f24-5624b059ce22)
+<img width="960" alt="4" src="https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/a750157e-54ca-44dc-af24-33607f520594">
+<img width="960" alt="5" src="https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/21ac1d42-96d7-4815-8340-deccc4c1bb81">
+<img width="960" alt="6" src="https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/2bc8fd2b-456e-4ce1-a57a-a8418c7a9576">
+![7](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/6b0c7a60-f20b-4736-bda3-05f1506e5bee)
+![8](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/5ca0f9d4-ab0d-466c-b57f-e81d9658f289)
+![9](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/83580110-e9e5-456d-98b1-0a6442f3f00a)
+
 
 ### Create Lambda Function
 
 **To create the function**
 1. Click "Create function" in AWS Lambda Console
 
-![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/fa6383bf-4ffa-47aa-9693-4143b95b22fe)
+![10](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/98e8b87f-d044-4dc0-bb17-a5af44c0f793)
+
 
 2. Select "Author from scratch". Use name **LambdaFunctionOverHttps** , select **Python 3.7** as Runtime. Under Permissions, select "Use an existing role", and select **lambda-apigateway-role** that we created, from the drop down
-![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/79dfd5aa-0983-4094-bfe5-df92ea10fe66)
+![11](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/14aa1b6d-695f-4b04-a86b-5a6b7f439c50)
+
 
 3. Click "Create function"
 
-![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/cf497eeb-0020-4b1d-8e15-a7bd23e336e1)
+![12](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/2274c78d-5e92-4eda-8a96-4dd095acfb45)
+
 
 
 4. Replace the boilerplate coding with the following code snippet and click "Save"
@@ -118,7 +122,8 @@ def lambda_handler(event, context):
     else:
         raise ValueError('Unrecognized operation "{}"'.format(operation))
 ```
-![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/8853dcf0-bb1f-48e0-a962-744d468985bb)
+<img width="960" alt="13" src="https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/f3ada729-5707-4eb5-94e6-5a3721b6d596">
+
 
 
 ### Test Lambda Function
@@ -126,8 +131,8 @@ def lambda_handler(event, context):
 Let's test our newly created function. We haven't created DynamoDB and the API yet, so we'll do a sample echo operation. The function should output whatever input we pass.
 1. Click the arrow on "Select a test event" and click "Configure test events"
 
-![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/dbe64d8a-0543-46ea-bce6-c40d8aef4fd0)
-![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/0388ee28-9e82-4efd-b299-18af0005f1ca)
+<img width="960" alt="14" src="https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/5a3b8107-2185-49a2-9fac-eade92355f78">
+![15](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/370418ea-a683-4aec-b346-cb4ce483dc2e)
 
 
 2. Paste the following JSON into the event. The field "operation" dictates what the lambda function will perform. In this case, it'd simply return the payload from input event as output. Click "Create" to save
@@ -140,12 +145,15 @@ Let's test our newly created function. We haven't created DynamoDB and the API y
     }
 }
 ```
-![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/a0d86d1b-5eb7-41a5-885e-161ce8181b7a)
+![16](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/eba23d94-de74-429b-9558-4cd303656f11)
+
 
 
 3. Click "Test", and it will execute the test event. You should see the output in the console
 
-![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/7d442b19-852d-47a3-a1b6-66b1d95ec2bd)
+
+<img width="960" alt="17" src="https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/94bd6e81-14f2-4aff-91c8-0e084ab5811e">
+
 
 We're all set to create DynamoDB table and an API using our lambda as backend.
 
@@ -155,9 +163,9 @@ Create the DynamoDB table that the Lambda function uses.
 
 **To create a DynamoDB table**
 
-![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/163caea4-42b9-48e8-841f-f7610c357389)
 
-![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/ccd935fb-61ec-4aa5-afba-a51f6e22ac4b)
+![18](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/d28c4ff4-1036-4319-bb1b-84752d4d67b5)
+![19](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/fea4ee2e-c1b5-4af1-b19f-76abbdedc25b)
 
 
 ### Create API
@@ -165,37 +173,29 @@ Create the DynamoDB table that the Lambda function uses.
 **To create the API**
 1. Go to API Gateway console
 2. Click Create API
-
-![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/4b43f43a-e9a9-46a8-ba88-abb0f96fc3f8)
-
 3. Scroll down and select "Build" for REST API
+![20](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/1ebf121a-9994-4f44-8042-270684fe4c59)
 
 4. Give the API name as "DynamoDBOperations", keep everything as is, click "Create API"
-
-![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/799406de-bbed-4287-aecb-6d74d9605c84)
+<img width="960" alt="21" src="https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/81913d43-9c88-4f71-af9a-edd14f889ac9">
 
 5. Click "Actions", then click "Create Resource"
-
-![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/d58ba4d5-2e43-46a5-ac60-b346694ea0cd)
-
-
 6. Input "DynamoDBManager" in the Resource Name, Resource Path will get populated. Click "Create Resource"
 
-![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/dc3bd160-fa82-457e-8384-9bae05166079)
+<img width="960" alt="22" src="https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/b903b2ec-367f-4fe3-a23a-b75199ece1c7">
 
 7. Let's create a POST Method for our API. With the "/dynamodbmanager" resource selected, Click "Actions" again and click "Create Method". 
 
-![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/2bf56e27-5c84-4532-be61-74d3a78d3e00)
+![23](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/da01b997-91c5-4320-b7a9-b31f72215207)
 
 8. Select "POST" from drop down , then click checkmark
 
-![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/0bad04cf-c62b-4b46-8656-2966b0cc7698)
+<img width="960" alt="24" src="https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/56398796-e16d-4c96-84ef-9ec9b5693389">
 
+![25](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/278e031c-f5a0-4e72-8e73-a2a1de12e766)
 
-![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/3e3d6c48-1dc3-4411-9350-e2a5792a7ba4)
+![26](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/52a495f0-3620-44fd-abbd-d63dbd754da6)
 
-
-![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/5220e497-c22f-43c6-8a5d-953532379344)
 
 Our API-Lambda integration is done!
 
@@ -205,15 +205,15 @@ In this step, we deploy the API that we created to a stage called prod.
 
 1. Click "Actions", select "Deploy API"
 
-![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/4a91da7b-5ffc-49ea-beb1-1e6595288702)
+![27](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/e873a438-39a1-4e83-93a9-64ec1785e5ec)
+
+<img width="960" alt="28" src="https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/6e5b07c0-784a-4ba9-ad88-f3c01bed13ba">
 
 2. Now it is going to ask you about a stage. Select "[New Stage]" for "Deployment stage". Give "Prod" as "Stage name". Click "Deploy"
 
-![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/6b57f982-460d-44ad-a2d8-c993174bc8af)
-
 3. We're all set to run our solution! To invoke our API endpoint, we need the endpoint url. In the "Stages" screen, expand the stage "Prod", select "POST" method, and copy the "Invoke URL" from screen
 
-![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/d92cc0ab-1b6c-4af7-806f-94c95ab68eab)
+<img width="960" alt="29" src="https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/53062407-29fb-4020-a4c9-c8b21283d31e">
 
 
 ### Running our solution
@@ -233,14 +233,12 @@ In this step, we deploy the API that we created to a stage called prod.
 }
 ```
 
-![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/8338ce5b-b6fc-49e1-89c5-72c469735bca)
+![30](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/11fb7bdc-5563-482d-aa66-1c6f0fc6950e)
 
 2. I used Postman to execute my API from local machine.
     * To run this from Postman, select "POST" , paste the API invoke url. Then under "Body" select "raw" and paste the above JSON. Click "Send". API should execute and return "HTTPStatusCode" 200.
 
-![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/c4fb16e4-0be0-472f-b672-cbfbc4fbe255)
-
-
+![32](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/4f0702a7-344e-497f-8524-ff3e41892d06)
 
 3.To create another different item in my DynamoDB table. 
 ```json
@@ -256,13 +254,12 @@ In this step, we deploy the API that we created to a stage called prod.
 }
 ```
 
-![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/4403232c-7680-4dd1-9972-dc4518e36f55)
-![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/2d77dae3-58d6-428a-a6bb-7aa4df0a366f)
+![34](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/8aba24a7-b5e1-4657-990a-168dc2a17159)
 
 4. To validate that the item is indeed inserted into DynamoDB table, go to Dynamo console, select "lambda-apigateway" table, select "Items" tab, and the newly inserted item should be displayed.
 
-![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/11f5230d-5ccc-4e34-ac2f-e4e05490bd89)
-![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/b854a39b-ef67-4fe3-b8fa-f665d05a5487)
+![36](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/9961a2f5-9fe9-4cfa-9460-4518f8b8165a)
+![37](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/159dc4b0-8025-4d81-b6a6-ea75c8dcba8c)
 
 5.To get all the inserted items from the table, we can use the "list" operation of Lambda using the same API. Pass the following JSON to the API, and it will return all the items from the Dynamo table
 
@@ -274,7 +271,8 @@ In this step, we deploy the API that we created to a stage called prod.
     }
 }
 ```
-![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/00c303f1-dcbb-4c82-92b3-ee95637fa3dd)
+
+![38](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/994af0b4-cac4-4075-9397-4b64c889f1ff)
 
 6.To read a specific item from the table, we can use the "read" operation of Lambda using the same API. To request this operation, use the following JSON:
 
@@ -290,9 +288,10 @@ In this step, we deploy the API that we created to a stage called prod.
 }
 
 ```
-![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/a03a3394-fa3a-442f-8e90-73e74815570c)
 
-6.To delete a specific item from the table, we can use the "delete" operation of Lambda using the same API. To request this operation, use the following JSON:
+![40](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/fedb3b31-acd6-432d-a36e-3473d44d9596)
+
+7.To delete a specific item from the table, we can use the "delete" operation of Lambda using the same API. To request this operation, use the following JSON:
 
 ```json
 {
@@ -306,8 +305,9 @@ In this step, we deploy the API that we created to a stage called prod.
 }
 ```
 
-![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/f27e9f41-12d8-40b8-8520-5bc9ce7e8b0e)
-![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/5b75fb3d-7d0d-419b-a9b6-89c9b5e2d1aa)
-![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/ba609f2e-d774-4ea4-9ab2-75facc4bba8e)
+![42](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/f95ee7ef-0c0a-4c56-bcd3-ee50a9138919)
+![43](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/015e8e4d-5223-49a1-93fb-634e67a9cb22)
+![44](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/491adab5-5cad-448f-b189-6860a862147b)
+![45](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/45c5925c-ff4a-48dc-b526-1075fa0d561e)
 
 I have successfully created a serverless API using API Gateway, Lambda, and DynamoDB!
