@@ -2,7 +2,7 @@
 
 ## Lab Overview
 
-This model of lab is original from Saha-Rajeep, and then I finished it and added my steps and code on the base of it.
+This model of lab is original from Saha-Rajeep, and then I finished it and added my steps, images and code on the base of it.
 ![High Level Design](./images/high-level-design.jpg)
 An Amazon API Gateway is a collection of resources and methods. For this tutorial, you create one resource (DynamoDBManager) and define one method (POST) on it. The method is backed by a Lambda function (LambdaFunctionOverHttps). That is, when you call the API through an HTTPS endpoint, Amazon API Gateway invokes the Lambda function.
 
@@ -16,8 +16,11 @@ The POST method on the DynamoDBManager resource supports the following DynamoDB 
 
 ## Setup
 
-### Create Lambda IAM Role 
+### Create Lambda IAM Role
+Create the execution role that gives function permission to access AWS resources.
+
 ![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/f330a908-9144-41b8-9039-faff8cca347c)
+
 ```json
  {
     "Version": "2012-10-17",
@@ -48,6 +51,7 @@ The POST method on the DynamoDBManager resource supports the following DynamoDB 
     ]
     }
 ```
+
 ![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/61c8366f-a189-4398-88a2-0b8b5f7c6d55)
 ![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/a118e6e7-724d-4a07-9d89-a76e1524a4ac)
 ![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/5cd52458-95a0-4d3a-92c9-bca6b2cd18ba)
@@ -62,13 +66,15 @@ The POST method on the DynamoDBManager resource supports the following DynamoDB 
 **To create the function**
 1. Click "Create function" in AWS Lambda Console
 
-![Create function](./images/create-lambda.jpg)
+![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/fa6383bf-4ffa-47aa-9693-4143b95b22fe)
 
 2. Select "Author from scratch". Use name **LambdaFunctionOverHttps** , select **Python 3.7** as Runtime. Under Permissions, select "Use an existing role", and select **lambda-apigateway-role** that we created, from the drop down
+![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/79dfd5aa-0983-4094-bfe5-df92ea10fe66)
 
 3. Click "Create function"
 
-![Lambda basic information](./images/lambda-basic-info.jpg)
+![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/cf497eeb-0020-4b1d-8e15-a7bd23e336e1)
+
 
 4. Replace the boilerplate coding with the following code snippet and click "Save"
 
@@ -111,14 +117,17 @@ def lambda_handler(event, context):
     else:
         raise ValueError('Unrecognized operation "{}"'.format(operation))
 ```
-![Lambda Code](./images/lambda-code-paste.jpg)
+![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/8853dcf0-bb1f-48e0-a962-744d468985bb)
+
 
 ### Test Lambda Function
 
 Let's test our newly created function. We haven't created DynamoDB and the API yet, so we'll do a sample echo operation. The function should output whatever input we pass.
 1. Click the arrow on "Select a test event" and click "Configure test events"
 
-![Configure test events](./images/lambda-test-event-create.jpg)
+![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/dbe64d8a-0543-46ea-bce6-c40d8aef4fd0)
+![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/0388ee28-9e82-4efd-b299-18af0005f1ca)
+
 
 2. Paste the following JSON into the event. The field "operation" dictates what the lambda function will perform. In this case, it'd simply return the payload from input event as output. Click "Create" to save
 ```json
@@ -130,13 +139,14 @@ Let's test our newly created function. We haven't created DynamoDB and the API y
     }
 }
 ```
-![Save test event](./images/save-test-event.jpg)
+![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/a0d86d1b-5eb7-41a5-885e-161ce8181b7a)
+
 
 3. Click "Test", and it will execute the test event. You should see the output in the console
 
-![Execute test event](./images/execute-test.jpg)
+![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/7d442b19-852d-47a3-a1b6-66b1d95ec2bd)
 
-We're all set to create DynamoDB table and an API using our lambda as backend!
+We're all set to create DynamoDB table and an API using our lambda as backend.
 
 ### Create DynamoDB Table
 
@@ -144,14 +154,9 @@ Create the DynamoDB table that the Lambda function uses.
 
 **To create a DynamoDB table**
 
-1. Open the DynamoDB console.
-2. Choose Create table.
-3. Create a table with the following settings.
-   * Table name – lambda-apigateway
-   * Primary key – id (string)
-4. Choose Create.
+![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/163caea4-42b9-48e8-841f-f7610c357389)
 
-![create DynamoDB table](./images/create-dynamo-table.jpg)
+![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/ccd935fb-61ec-4aa5-afba-a51f6e22ac4b)
 
 
 ### Create API
@@ -160,55 +165,54 @@ Create the DynamoDB table that the Lambda function uses.
 1. Go to API Gateway console
 2. Click Create API
 
-![create API](./images/create-api-button.jpg) 
+![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/4b43f43a-e9a9-46a8-ba88-abb0f96fc3f8)
 
 3. Scroll down and select "Build" for REST API
 
-![Build REST API](./images/build-rest-api.jpg) 
-
 4. Give the API name as "DynamoDBOperations", keep everything as is, click "Create API"
 
-![Create REST API](./images/create-new-api.jpg)
+![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/799406de-bbed-4287-aecb-6d74d9605c84)
 
-5. Each API is collection of resources and methods that are integrated with backend HTTP endpoints, Lambda functions, or other AWS services. Typically, API resources are organized in a resource tree according to the application logic. At this time you only have the root resource, but let's add a resource next 
+5. Click "Actions", then click "Create Resource"
 
-Click "Actions", then click "Create Resource"
+![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/d58ba4d5-2e43-46a5-ac60-b346694ea0cd)
 
-![Create API resource](./images/create-api-resource.jpg)
 
 6. Input "DynamoDBManager" in the Resource Name, Resource Path will get populated. Click "Create Resource"
 
-![Create resource](./images/create-resource-name.jpg)
+![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/dc3bd160-fa82-457e-8384-9bae05166079)
 
 7. Let's create a POST Method for our API. With the "/dynamodbmanager" resource selected, Click "Actions" again and click "Create Method". 
 
-![Create resource method](./images/create-method-1.jpg)
+![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/2bf56e27-5c84-4532-be61-74d3a78d3e00)
 
 8. Select "POST" from drop down , then click checkmark
 
-![Create resource method](./images/create-method-2.jpg)
+![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/0bad04cf-c62b-4b46-8656-2966b0cc7698)
 
-9. The integration will come up automatically with "Lambda Function" option selected. Select "LambdaFunctionOverHttps" function that we created earlier. As you start typing the name, your function name will show up.Select and click "Save". A popup window will come up to add resource policy to the lambda to be invoked by this API. Click "Ok"
 
-![Create lambda integration](./images/create-lambda-integration.jpg)
+![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/3e3d6c48-1dc3-4411-9350-e2a5792a7ba4)
+
+
+![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/5220e497-c22f-43c6-8a5d-953532379344)
 
 Our API-Lambda integration is done!
 
 ### Deploy the API
 
-In this step, you deploy the API that you created to a stage called prod.
+In this step, we deploy the API that we created to a stage called prod.
 
 1. Click "Actions", select "Deploy API"
 
-![Deploy API](./images/deploy-api-1.jpg)
+![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/4a91da7b-5ffc-49ea-beb1-1e6595288702)
 
 2. Now it is going to ask you about a stage. Select "[New Stage]" for "Deployment stage". Give "Prod" as "Stage name". Click "Deploy"
 
-![Deploy API to Prod Stage](./images/deploy-api-2.jpg)
+![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/6b57f982-460d-44ad-a2d8-c993174bc8af)
 
 3. We're all set to run our solution! To invoke our API endpoint, we need the endpoint url. In the "Stages" screen, expand the stage "Prod", select "POST" method, and copy the "Invoke URL" from screen
 
-![Copy Invoke Url](./images/copy-invoke-url.jpg)
+![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/d92cc0ab-1b6c-4af7-806f-94c95ab68eab)
 
 
 ### Running our solution
@@ -227,20 +231,39 @@ In this step, you deploy the API that you created to a stage called prod.
     }
 }
 ```
-2. To execute our API from local machine, we are going to use Postman and Curl command. You can choose either method based on your convenience and familiarity. 
+
+![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/8338ce5b-b6fc-49e1-89c5-72c469735bca)
+
+2. I used Postman to execute my API from local machine.
     * To run this from Postman, select "POST" , paste the API invoke url. Then under "Body" select "raw" and paste the above JSON. Click "Send". API should execute and return "HTTPStatusCode" 200.
 
-    ![Execute from Postman](./images/create-from-postman.jpg)
+![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/c4fb16e4-0be0-472f-b672-cbfbc4fbe255)
 
-    * To run this from terminal using Curl, run the below
-    ```
-    $ curl -X POST -d "{\"operation\":\"create\",\"tableName\":\"lambda-apigateway\",\"payload\":{\"Item\":{\"id\":\"1\",\"name\":\"Bob\"}}}" https://$API.execute-api.$REGION.amazonaws.com/prod/DynamoDBManager
-    ```   
-3. To validate that the item is indeed inserted into DynamoDB table, go to Dynamo console, select "lambda-apigateway" table, select "Items" tab, and the newly inserted item should be displayed.
 
-![Dynamo Item](./images/dynamo-item.jpg)
 
-4. To get all the inserted items from the table, we can use the "list" operation of Lambda using the same API. Pass the following JSON to the API, and it will return all the items from the Dynamo table
+3.To create another different item in my DynamoDB table. 
+```json
+{
+    "operation": "create",
+    "tableName": "lambda-apigateway",
+    "payload": {
+        "Item": {
+            "id": "123ABCD",
+            "number": 6
+        }
+    }
+}
+```
+
+![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/4403232c-7680-4dd1-9972-dc4518e36f55)
+![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/2d77dae3-58d6-428a-a6bb-7aa4df0a366f)
+
+4. To validate that the item is indeed inserted into DynamoDB table, go to Dynamo console, select "lambda-apigateway" table, select "Items" tab, and the newly inserted item should be displayed.
+
+![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/11f5230d-5ccc-4e34-ac2f-e4e05490bd89)
+![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/b854a39b-ef67-4fe3-b8fa-f665d05a5487)
+
+5.To get all the inserted items from the table, we can use the "list" operation of Lambda using the same API. Pass the following JSON to the API, and it will return all the items from the Dynamo table
 
 ```json
 {
@@ -250,25 +273,38 @@ In this step, you deploy the API that you created to a stage called prod.
     }
 }
 ```
-![List Dynamo Items](./images/dynamo-item-list.jpg)
+![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/00c303f1-dcbb-4c82-92b3-ee95637fa3dd)
 
-We have successfully created a serverless API using API Gateway, Lambda, and DynamoDB!
+6.To read a specific item from the table, we can use the "read" operation of Lambda using the same API. To request this operation, use the following JSON:
 
-## Cleanup
+```json
+{
+    "operation": "read",
+    "tableName": "lambda-apigateway",
+    "payload": {
+        "Key": {
+            "id": "123ABCD"
+        }
+    }
+}
 
-Let's clean up the resources we have created for this lab.
+```
+![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/a03a3394-fa3a-442f-8e90-73e74815570c)
 
+6.To delete a specific item from the table, we can use the "delete" operation of Lambda using the same API. To request this operation, use the following JSON:
 
-### Cleaning up DynamoDB
+{
+    "operation": "delete",
+    "tableName": "lambda-apigateway",
+    "payload": {
+        "Key": {
+            "id": "1234ABCD"
+        }
+    }
+}
 
-To delete the table, from DynamoDB console, select the table "lambda-apigateway", and click "Delete table"
+![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/f27e9f41-12d8-40b8-8520-5bc9ce7e8b0e)
+![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/5b75fb3d-7d0d-419b-a9b6-89c9b5e2d1aa)
+![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/ba609f2e-d774-4ea4-9ab2-75facc4bba8e)
 
-![Delete Dynamo](./images/delete-dynamo.jpg)
-
-To delete the Lambda, from the Lambda console, select lambda "LambdaFunctionOverHttps", click "Actions", then click Delete 
-
-![Delete Lambda](./images/delete-lambda.jpg)
-
-To delete the API we created, in API gateway console, under APIs, select "DynamoDBOperations" API, click "Actions", then "Delete"
-
-![Delete API](./images/delete-api.jpg)
+I have successfully created a serverless API using API Gateway, Lambda, and DynamoDB!
