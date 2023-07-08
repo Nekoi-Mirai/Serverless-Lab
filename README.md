@@ -19,7 +19,8 @@ The POST method on the DynamoDBManager resource supports the following DynamoDB 
 ### Create Lambda IAM Role
 Create the execution role that gives function permission to access AWS resources.
 
-![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/f330a908-9144-41b8-9039-faff8cca347c)
+<img width="960" alt="1" src="https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/a46f751e-3472-402b-b1f4-51a622cf8002">
+
 
 ```json
  {
