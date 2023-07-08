@@ -54,13 +54,17 @@ Create the execution role that gives function permission to access AWS resources
 ```
 
 <img width="960" alt="2" src="https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/56a321ff-7c6e-42e7-b1e2-e5847513dc34">
-![3](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/b3d463c0-dff4-4bd7-af9d-1463e63a1c53)
+
+![3](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/fdfb3d5b-6a42-46b1-b20b-31d493d6fc1f)
 <img width="960" alt="4" src="https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/a750157e-54ca-44dc-af24-33607f520594">
 <img width="960" alt="5" src="https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/21ac1d42-96d7-4815-8340-deccc4c1bb81">
 <img width="960" alt="6" src="https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/2bc8fd2b-456e-4ce1-a57a-a8418c7a9576">
-![7](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/f5c3ea8c-0277-4d05-a73e-8c95f84cc7be)
-![8](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/5ca0f9d4-ab0d-466c-b57f-e81d9658f289)
-![9](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/83580110-e9e5-456d-98b1-0a6442f3f00a)
+
+![7](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/39a7aca4-e98a-4c2e-9585-2848b2fe7fff)
+
+![8](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/6a8597d4-a9f3-42e3-a91a-0146c14bf0e0)
+
+![9](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/9237a482-048f-4e56-86dd-322e41ade8e0)
 
 
 ### Create Lambda Function
@@ -78,7 +82,6 @@ Create the execution role that gives function permission to access AWS resources
 3. Click "Create function"
 
 ![12](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/2274c78d-5e92-4eda-8a96-4dd095acfb45)
-
 
 
 4. Replace the boilerplate coding with the following code snippet and click "Save"
@@ -132,6 +135,7 @@ Let's test our newly created function. We haven't created DynamoDB and the API y
 1. Click the arrow on "Select a test event" and click "Configure test events"
 
 <img width="960" alt="14" src="https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/5a3b8107-2185-49a2-9fac-eade92355f78">
+
 ![15](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/26ea396c-3add-4b8e-ad46-61c2340b7aad)
 
 2. Paste the following JSON into the event. The field "operation" dictates what the lambda function will perform. In this case, it'd simply return the payload from input event as output. Click "Create" to save
