@@ -54,11 +54,11 @@ Create the execution role that gives function permission to access AWS resources
 ```
 
 <img width="960" alt="2" src="https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/56a321ff-7c6e-42e7-b1e2-e5847513dc34">
-![3](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/b16afaa5-ac54-4523-8f24-5624b059ce22)
+![3](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/b3d463c0-dff4-4bd7-af9d-1463e63a1c53)
 <img width="960" alt="4" src="https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/a750157e-54ca-44dc-af24-33607f520594">
 <img width="960" alt="5" src="https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/21ac1d42-96d7-4815-8340-deccc4c1bb81">
 <img width="960" alt="6" src="https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/2bc8fd2b-456e-4ce1-a57a-a8418c7a9576">
-![7](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/6b0c7a60-f20b-4736-bda3-05f1506e5bee)
+![7](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/f5c3ea8c-0277-4d05-a73e-8c95f84cc7be)
 ![8](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/5ca0f9d4-ab0d-466c-b57f-e81d9658f289)
 ![9](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/83580110-e9e5-456d-98b1-0a6442f3f00a)
 
@@ -132,8 +132,7 @@ Let's test our newly created function. We haven't created DynamoDB and the API y
 1. Click the arrow on "Select a test event" and click "Configure test events"
 
 <img width="960" alt="14" src="https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/5a3b8107-2185-49a2-9fac-eade92355f78">
-![15](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/370418ea-a683-4aec-b346-cb4ce483dc2e)
-
+![15](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/26ea396c-3add-4b8e-ad46-61c2340b7aad)
 
 2. Paste the following JSON into the event. The field "operation" dictates what the lambda function will perform. In this case, it'd simply return the payload from input event as output. Click "Create" to save
 ```json
@@ -148,14 +147,12 @@ Let's test our newly created function. We haven't created DynamoDB and the API y
 ![16](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/eba23d94-de74-429b-9558-4cd303656f11)
 
 
-
 3. Click "Test", and it will execute the test event. You should see the output in the console
-
 
 <img width="960" alt="17" src="https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/94bd6e81-14f2-4aff-91c8-0e084ab5811e">
 
-
 We're all set to create DynamoDB table and an API using our lambda as backend.
+
 
 ### Create DynamoDB Table
 
