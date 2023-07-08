@@ -18,7 +18,17 @@ The POST method on the DynamoDBManager resource supports the following DynamoDB 
 
 ### Create Lambda IAM Role 
 ![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/f330a908-9144-41b8-9039-faff8cca347c)
-   {
+
+![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/61c8366f-a189-4398-88a2-0b8b5f7c6d55)
+![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/a118e6e7-724d-4a07-9d89-a76e1524a4ac)
+![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/5cd52458-95a0-4d3a-92c9-bca6b2cd18ba)
+![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/18b60554-9957-4fbe-abd5-35638cab9864)
+![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/5103b2e0-8d46-4a5d-93f0-d04c1e09d5ee)
+![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/61f74c62-e7fc-4dae-9244-20ed0ec487c1)
+![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/bd8a95c5-591a-4590-8d83-afeab884ca2c)
+![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/b7d5e1b6-4929-4ad4-961a-41076cb06142)
+
+ {
     "Version": "2012-10-17",
     "Statement": [
     {
@@ -46,17 +56,7 @@ The POST method on the DynamoDBManager resource supports the following DynamoDB 
     }
     ]
     }
-    
-![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/61c8366f-a189-4398-88a2-0b8b5f7c6d55)
-![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/a118e6e7-724d-4a07-9d89-a76e1524a4ac)
-![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/5cd52458-95a0-4d3a-92c9-bca6b2cd18ba)
-![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/18b60554-9957-4fbe-abd5-35638cab9864)
-![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/5103b2e0-8d46-4a5d-93f0-d04c1e09d5ee)
-![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/61f74c62-e7fc-4dae-9244-20ed0ec487c1)
-![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/bd8a95c5-591a-4590-8d83-afeab884ca2c)
-![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/b7d5e1b6-4929-4ad4-961a-41076cb06142)
-
-    ```
+```
 
 ### Create Lambda Function
 
