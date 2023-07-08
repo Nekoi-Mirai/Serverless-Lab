@@ -293,6 +293,7 @@ In this step, we deploy the API that we created to a stage called prod.
 
 6.To delete a specific item from the table, we can use the "delete" operation of Lambda using the same API. To request this operation, use the following JSON:
 
+```json
 {
     "operation": "delete",
     "tableName": "lambda-apigateway",
@@ -302,6 +303,7 @@ In this step, we deploy the API that we created to a stage called prod.
         }
     }
 }
+```
 
 ![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/f27e9f41-12d8-40b8-8520-5bc9ce7e8b0e)
 ![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/5b75fb3d-7d0d-419b-a9b6-89c9b5e2d1aa)
