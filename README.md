@@ -1,8 +1,8 @@
-# LevelUp! Lab for Serverless
+# Serverless Lab
 
-## Lab Overview And High Level Design
+## Lab Overview
 
-Let's start with the High Level Design.
+This model of lab is original from Saha-Rajeep, and then I finished it and added my steps and code on the base of it.
 ![High Level Design](./images/high-level-design.jpg)
 An Amazon API Gateway is a collection of resources and methods. For this tutorial, you create one resource (DynamoDBManager) and define one method (POST) on it. The method is backed by a Lambda function (LambdaFunctionOverHttps). That is, when you call the API through an HTTPS endpoint, Amazon API Gateway invokes the Lambda function.
 
@@ -13,50 +13,12 @@ The POST method on the DynamoDBManager resource supports the following DynamoDB 
 * Scan an item.
 * Other operations (echo, ping), not related to DynamoDB, that you can use for testing.
 
-The request payload you send in the POST request identifies the DynamoDB operation and provides necessary data. For example:
-
-The following is a sample request payload for a DynamoDB create item operation:
-
-```json
-{
-    "operation": "create",
-    "tableName": "lambda-apigateway",
-    "payload": {
-        "Item": {
-            "id": "1",
-            "name": "Bob"
-        }
-    }
-}
-```
-The following is a sample request payload for a DynamoDB read item operation:
-```json
-{
-    "operation": "read",
-    "tableName": "lambda-apigateway",
-    "payload": {
-        "Key": {
-            "id": "1"
-        }
-    }
-}
-```
 
 ## Setup
 
 ### Create Lambda IAM Role 
-Create the execution role that gives your function permission to access AWS resources.
-
-To create an execution role
-
-1. Open the roles page in the IAM console.
-2. Choose Create role.
-3. Create a role with the following properties.
-    * Trusted entity – Lambda.
-    * Role name – **lambda-apigateway-role**.
-    * Permissions – Custom policy with permission to DynamoDB and CloudWatch Logs. This custom policy has the permissions that  the function needs to write data to DynamoDB and upload logs. 
-    ```json
-    {
+![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/f330a908-9144-41b8-9039-faff8cca347c)
+   {
     "Version": "2012-10-17",
     "Statement": [
     {
@@ -84,6 +46,16 @@ To create an execution role
     }
     ]
     }
+    
+![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/61c8366f-a189-4398-88a2-0b8b5f7c6d55)
+![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/a118e6e7-724d-4a07-9d89-a76e1524a4ac)
+![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/5cd52458-95a0-4d3a-92c9-bca6b2cd18ba)
+![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/18b60554-9957-4fbe-abd5-35638cab9864)
+![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/5103b2e0-8d46-4a5d-93f0-d04c1e09d5ee)
+![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/61f74c62-e7fc-4dae-9244-20ed0ec487c1)
+![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/bd8a95c5-591a-4590-8d83-afeab884ca2c)
+![image](https://github.com/Nekoi-Mirai/Serverless-Lab/assets/126063968/b7d5e1b6-4929-4ad4-961a-41076cb06142)
+
     ```
 
 ### Create Lambda Function
